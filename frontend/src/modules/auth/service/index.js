@@ -1,13 +1,39 @@
 import http from '@/helpers/axios'
+import router from '@/helpers/router'
+import store from '@/helpers/store'
 
-function apiLogin(data) {
-  http.post("auth/login/", data).then(res => console.log(res)) 
+
+async function apiLogin(data) {
+  
+  let self = this
+  let user = {
+    auth: false,
+    token: '',
+    refreshToken: '',
+    username: '',
+    email: ''
+  }
+
+  await http.post("auth/login/", data).then(res => {
+
+      user.auth = true;
+      user.token = res.data.access;
+      user.refreshToken = res.data.refresh;
+
+      store.dispatch('authorize',{user:user})
+      router.push({name: 'home'})      
+
+    }).catch(err => {
+
+      console.log(err)
+      
+    })  
 }
 
-function apiRegister(data) {
-  http.post("auth/register/", data).then(res => {
-    console.log(res)
-    this.$router.push("/login")
+async function apiRegister(data) {
+
+  await http.post("auth/register/", data).then(res => {
+    router.push({name: 'login'})
   }).catch(error => {
     console.log(error.response.data)
   }) 
