@@ -6,8 +6,8 @@
 
 `O projeto já conta com authenticação por JWT, tela de login e de cadastro.`
 
-<br></br>
-<hr>
+
+
 
 ## Tecnologias
 
@@ -21,8 +21,8 @@
 - Docker
 - Docker-Compose
 
-<br></br>
-<hr>
+
+
 
 ## Documentação da API
 
@@ -52,8 +52,8 @@
 | `password`  | `string` | **Obrigatório**. |
 | `password2` | `string` | **Obrigatório**. |
 
-<br></br>
-<hr>
+
+
 
 ## Autores
 
