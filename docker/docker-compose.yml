@@ -1,0 +1,38 @@
+version: "3.3"
+
+services:
+
+  frontend:
+    build:
+      context: ../frontend
+      target: 'develop-stage'
+    ports:
+    - '8080:8080'
+    volumes:
+    - ../frontend:/frontend-app
+    command: /bin/sh -c "yarn serve"
+    depends_on:
+      - backend
+
+  backend:
+    build: ../backend
+    command: sh -c 'python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:3000'
+    volumes:
+      - ../backend:/backend-app
+    ports:
+      - 3000:3000
+    depends_on:
+      - db
+  
+  db:
+    image: postgres:14
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - 5432:5432
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/      
+
+volumes:
+  postgres_data:
