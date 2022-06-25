@@ -29,7 +29,7 @@
 #### Retorna um token jwt de acesso ao sistema.
 
 ```http
-  POST /auth/login/
+  POST :3000/auth/login/
 ```
 
 | Parâmetro  | Tipo     | Descrição        |
@@ -40,7 +40,7 @@
 #### Cadastra um usuário.
 
 ```http
-  POST /auth/register/
+  POST :3000/auth/register/
 ```
 
 | Parâmetro   | Tipo     | Descrição        |

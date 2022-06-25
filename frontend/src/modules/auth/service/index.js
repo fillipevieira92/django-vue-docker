@@ -5,6 +5,8 @@ import store from '@/helpers/store'
 
 async function apiLogin(data) {
   
+  let error;
+
   await http.post("auth/login/", data).then(res => {
 
       const access = {
@@ -17,19 +19,23 @@ async function apiLogin(data) {
       router.push({name: 'home'})      
 
     }).catch(err => {
+      error = err
+    })
 
-      console.log(err)
-      
-    })  
+  return error
 }
 
 async function apiRegister(data) {
+  
+  let error;
 
   await http.post("auth/register/", data).then(res => {
-    router.push({name: 'login'})
-  }).catch(error => {
-    console.log(error.response.data)
-  }) 
+    router.push({name: 'login'})    
+  }).catch(err => {
+    error = err
+  })
+
+  return error
 }
 
 export {

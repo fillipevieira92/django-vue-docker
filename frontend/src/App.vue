@@ -8,7 +8,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #ffffff;
   display: block;
   justify-content: center;
   align-items: center;
@@ -17,5 +17,6 @@
 body{
  margin: 0;
  padding: 0;
+ background-color:#2c3e50;
 }
 </style>
