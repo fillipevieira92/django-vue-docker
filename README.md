@@ -55,6 +55,7 @@
 
 
 
-## Autores
-
-- [@fillipevieira92](https://www.github.com/fillipevieira92)
+## Autor
+<p>Fillipe Vieira</p>
+<a target="_blank" href="http://www.github.com/fillipevieira92"><img src="https://img.icons8.com/fluency/48/000000/github.png"/></a>
+<a target="_blank" href="http://www.linkedin.com/in/fillipevieira92"><img src="https://img.icons8.com/color/48/000000/linkedin-circled--v1.png"/></a>
