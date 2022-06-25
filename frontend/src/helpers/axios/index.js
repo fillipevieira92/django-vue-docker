@@ -6,6 +6,6 @@ const http = axios.create()
 http.defaults.baseURL = "http://localhost:3000"
 //http.defaults.headers = {"Content-Type":"application/json"}
 
-http.create()
+http.create({withCredentials:true})
 
 export default http

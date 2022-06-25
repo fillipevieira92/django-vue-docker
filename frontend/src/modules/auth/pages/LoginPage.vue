@@ -1,13 +1,15 @@
 <template>
-  <main>
-    <h2>Login</h2>
-    <form @submit.prevent="login" class="mb-3">
-      <input @keyup="validForm" placeholder="Usuário" type="text" v-model="form.username" class="form-control w-100 mb-3" required>
-      <input @keyup="validForm" placeholder="Senha" type="password" v-model="form.password" class="form-control w-100 mb-3" required>
-
-      <input v-bind:class="formValid ? '':'disabled'" type="submit" class="btn btn-success w-100" value="Login">
-    </form>
-    <p>Não tem cadastro? <router-link to="/register">Cadastre-se!</router-link></p>
+  <main class="container">
+    <div class="form-login">
+      <h2>Login</h2>
+      <form @submit.prevent="login" class="mb-3">
+        <input @keyup="validForm" placeholder="Usuário" type="text" v-model="form.username" class="form-control w-100 mb-3" required>
+        <input @keyup="validForm" placeholder="Senha" type="password" v-model="form.password" class="form-control w-100 mb-3" required>
+  
+        <input v-bind:class="formValid ? '':'disabled'" type="submit" class="btn btn-success w-100" value="Login">
+      </form>
+      <p>Não tem cadastro? <router-link to="/register">Cadastre-se!</router-link></p>      
+    </div>
   </main>
 </template>
 
@@ -46,17 +48,18 @@ main{
   padding: 2em;
   border-radius: 8px;
   box-shadow: 0 0 1.5rem rgba(0,0,0,.5);
+  margin-top: 5rem;
 }
 h2{
   text-align: left;
 }
-main>p>a {
+main>.form-login>p>a {
   font-weight: bold;
   color: #2c3e50;
   transition: 150ms all ease-in-out;
 }
 
-main>p>a:hover{
+main>.form-login>p>a:hover{
   color: #32875f;
 }
 </style>

@@ -5,22 +5,15 @@ import store from '@/helpers/store'
 
 async function apiLogin(data) {
   
-  let self = this
-  let user = {
-    auth: false,
-    token: '',
-    refreshToken: '',
-    username: '',
-    email: ''
-  }
-
   await http.post("auth/login/", data).then(res => {
 
-      user.auth = true;
-      user.token = res.data.access;
-      user.refreshToken = res.data.refresh;
+      const access = {
+        refreshToken:res.data.refresh,
+        token:res.data.access,
+        auth:true,
+      }
 
-      store.dispatch('authorize',{user:user})
+      store.dispatch('authorize', access)
       router.push({name: 'home'})      
 
     }).catch(err => {

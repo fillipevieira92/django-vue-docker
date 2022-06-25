@@ -1,56 +1,58 @@
-import { createStore, commit } from 'vuex'
+import { createStore } from 'vuex'
+import jwt_decode from 'jwt-decode'
 
 const store = createStore({
   state: {
-    user: {
-      auth: false,
-      token: '',
+    access: {
       refreshToken: '',
-      username: '',
-      email: ''
+      auth: false,
+      token: '',      
     },
   },
 
   getters:{
-    userAuth () {
-      return window.localStorage.getItem('user.auth') ? true:false;
+    userAuth() {
+      return window.localStorage.getItem('AUTH');
     },
-    user (state){
-      return state.user
+    
+    userInfo() {
+      return jwt_decode(window.localStorage.getItem('UID'))
     }
   },
 
   mutations: {
-    authorize: (state, user) => {
-      console.log(user)
-      state.user.auth = true;
-      state.user.token = user.token;
-      state.user.refreshToken = user.refreshToken;
-      state.user.username = user.username;
-      state.user.email = user.email
+    authorize: (state, access) => {
+
+      state.access.refreshToken = access.refreshToken;
+      state.access.token = access.token;
+      state.access.auth = true;
+            
+      window.localStorage.setItem('UID', state.access.token)
+      window.localStorage.setItem('AUTH', state.access.auth)
       
-      window.localStorage.setItem('user.auth', state.user.auth)
-      window.localStorage.setItem('user.token', state.user.token)
-      window.localStorage.setItem('user.refreshToken', state.user.refreshToken)
-      window.localStorage.setItem('user.username', state.user.username)
-      window.localStorage.setItem('user.email', state.user.email)
     },
+
     unauthorize: (state) => {
-      window.localStorage.removeItem('user.auth')
-      window.localStorage.removeItem('user.token')
-      window.localStorage.removeItem('user.refreshToken')
-      window.localStorage.removeItem('user.username')
-      window.localStorage.removeItem('user.email')
-    }
+
+      window.localStorage.removeItem('AUTH')
+      window.localStorage.removeItem('UID')      
+      state.access.auth = false
+      window.location.reload()
+
+    },
+
   },
 
   actions: {
-    authorize({commit}, user) {
-      commit('authorize', user.user);
+
+    authorize({commit}, access) {
+      commit('authorize', access);
     },
+
     unauthorize({commit}){
-      this.commit('unauthorize')
-    }
+      commit('unauthorize')
+    },
+
   },  
 })
 

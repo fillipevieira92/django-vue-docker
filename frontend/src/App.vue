@@ -1,7 +1,5 @@
 <template>
-  <div class="content">
-    <router-view class="container my-auto"></router-view>
-  </div>
+  <router-view></router-view>  
 </template>
 
 <style>
@@ -11,11 +9,13 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-}
-.content{
-  display: flex;
+  display: block;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  max-height: 100vh;
+}
+body{
+ margin: 0;
+ padding: 0;
 }
 </style>
