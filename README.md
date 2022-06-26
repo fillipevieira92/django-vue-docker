@@ -4,7 +4,7 @@
 
 `O intuito deste projeto é para facilitar e agilizar o processo inicial do desenvolvimento de um sistema.`
 
-`O projeto já conta com authenticação por JWT, tela de login e de cadastro.`
+`O projeto já conta com autenticação por JWT, tela de login e de cadastro.`
 
 
 
