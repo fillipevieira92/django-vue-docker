@@ -1,9 +1,13 @@
 # develop stage
 FROM node:18-alpine3.15 as develop-stage
-WORKDIR /frontend-app
-COPY package*.json ./
-RUN yarn install
-COPY . .
+
+COPY package*.json /data/
+WORKDIR /data/
+RUN npm install
+ENV PATH /data/node_modules/.bin:$PATH
+
+COPY . /data/frontend-app
+WORKDIR /data/frontend-app
 
 # build stage
 FROM develop-stage as build-stage
